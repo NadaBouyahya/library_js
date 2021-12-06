@@ -10,24 +10,37 @@
 <body>
     <form id="validation" >
         <label>Title:</label>
+            <p id="title_msg"></p>
             <input type="text" name="title">
+        
         <label>Author:</label>
+        <p id="author_msg"></p>
             <input type="text" name="author">
+        
         <label>Price:</label>
+        <p id="price"></p>
             <input type="number" step=0.01 name="price">
+        
         <label>Publish date:</label>
             <input type="date" name="date">
+        
+        <label for=""> language:</label>
+        <p id="language_msg"></p>
         <select id="language" name="languages">
             <option>select a language</option>
             <option value="Arabic">Arabic</option>
             <option value="English">English</option>
             <option value="French">French</option>
         </select>
-            <label for="Novel">Novels</label>
+        
+        <p id="type_msg"></p>
+        <label for="Novel">Novels</label>
             <input type="radio" name="type" id="Novel" value="Novel">
-            <label for="Essay">Essay</label>
+            
+        <label for="Essay">Essay</label>
             <input type="radio" name="type" id="Essay" value="Essay">
-            <label for="Comics">Comics</label>
+            
+        <label for="Comics">Comics</label>
             <input type="radio" name="type" id="comics" value="Comics">
 
     
@@ -43,13 +56,16 @@
         var books_type = validation.elements["type"]
         
         var form_ok = true ;
+        var errorMessage = document.getElementById('title_msg');
 
         function validate(event) {
 
             if (Title.value.length > 10 || Author.value.length >10) {
                form_ok = false;
-               //event.preventDefault();//
-                alert("error");
+                errorMessage.innerHTML = ("title too long")
+                errorMessage.style.color = 'red'
+               event.preventDefault();
+               // alert("error");
             }
         
 
