@@ -11,28 +11,30 @@
     <form id="validation" >
         <label>Title:</label>
             <p id="title_msg"></p>
-            <input type="text" name="title">
+            <input type="text" name="title"> <br> <br>
         
         <label>Author:</label>
         <p id="author_msg"></p>
-            <input type="text" name="author">
+            <input type="text" name="author"> <br> <br>
         
         <label>Price:</label>
-        <p id="price"></p>
-            <input type="number" step=0.01 name="price">
+        <p id="price_msg"></p>
+            <input type="text" name="price"> <br><br>
         
         <label>Publish date:</label>
-            <input type="date" name="date">
+        <p id="date_msg"></p>
+            <input type="date" name="date"> <br> <br>
         
-        <label for=""> language:</label>
+        <label> language:</label>
         <p id="language_msg"></p>
         <select id="language" name="languages">
             <option>select a language</option>
             <option value="Arabic">Arabic</option>
             <option value="English">English</option>
             <option value="French">French</option>
-        </select>
-        
+        </select> <br><br>
+            
+        <label>Types:</label>
         <p id="type_msg"></p>
         <label for="Novel">Novels</label>
             <input type="radio" name="type" id="Novel" value="Novel">
@@ -43,88 +45,132 @@
         <label for="Comics">Comics</label>
             <input type="radio" name="type" id="comics" value="Comics">
 
-    
-        <input type="submit" name="validate" value="submit" id="subm">
+        <p id="valid_done"></p>
+            <input type="submit" name="validate" value="submit" id="subm">
     </form>
 
     <script>
         var validation = document.getElementById('validation');
         var Title = validation.elements["title"];
         var Author = validation.elements["author"];
-        var Price = validation.elements["price"]
-        var Languages = validation.elements["language"]
-        var books_type = validation.elements["type"]
-        
+        var Price = validation.elements["price"];
+        var Languages = validation.elements["language"];
+        var books_type = validation.elements["type"];
+        var pub_date = validation.elements["date"]
         var form_ok = true ;
-        var errorMessage = document.getElementById('title_msg');
+        //var errorMessage = document.getElementById('title_msg');
 
         function validate(event) {
-
-            if (Title.value.length > 10 || Author.value.length >10) {
+            var errorTitle = document.getElementById('title_msg');
+            var errorAuthor = document.getElementById('author_msg');
+            var errorPrice = document.getElementById('price_msg');
+            var errorDate = document.getElementById('date_msg');
+            var errorLang = document.getElementById('language_msg');
+            var errorType = document.getElementById('type_msg')
+        
+            if(Title.value.length > 4){
                form_ok = false;
-                errorMessage.innerHTML = ("title too long")
-                errorMessage.style.color = 'red'
+               errorTitle.innerHTML = ("title too long")
+               errorTitle.style.color = 'red'
                event.preventDefault();
                // alert("error");
             }
-        
-
-        //alert(typeof Title.value);
-
-         if (Title.value == ""){
-                alert("please fill this field 1")
-        
-            //form_ok = false;
-            //Title.classList.add("ERROR")//
+             
+            else if(Title.value == ""){
+              form_ok = false;
+              errorTitle.innerHTML = ("please fill title field")
+              errorTitle.style.color = 'red'
+              event.preventDefault();
          }
-
-         else {
-             alert("good 1")
+         else{
+            errorTitle.innerHTML = "good!";
+            errorTitle.style.color = 'green';
          }
 
          if (Author.value == "") {
-             alert("please fill this field 2")
+             form_ok = false
+             errorAuthor.innerHTML = ('please fill author field')
+             errorAuthor.style.color = ('red')
+             event.preventDefault();
+        }
+        else if(Author.value.length > 4){
+            form_ok= false;
+            errorAuthor.innerHTML = ('author name too long');
+            errorAuthor.style.color = 'red'
+            event.preventDefault();
+        }
+        else{
+        errorAuthor.innerHTML = 'good 2';
+        errorAuthor.style.color = 'green';
+    }
+        
+        if(Price.value=="") {
+             form_ok = false
+            errorPrice.innerHTML= ('please fill price field')
+            errorPrice.style.color = 'red'
+            event.preventDefault();
+         }
+               
+        else if(isNaN(Price.value)){
+        errorPrice.innerHTML= ('please enter a number')
+        errorPrice.style.color = 'red'
+        event.preventDefault();
+        }
+        else if(Price.value <0){
+            errorPrice.innerHTML = ('enter a positive number');
+            errorPrice.style.color = 'red';
+            event.preventDefault();
+        }
+        else{
+            errorPrice.innerHTML= 'good 3'
+            errorPrice.style.color = 'green'
+        }
+
+        
+        
+        // else {
+        //     errorPrice.innerHTML= 'good 4'
+        //     errorPrice.style.color = 'green'
+        // }
+        
+        if(pub_date.value ==""){
+            form_ok = false;
+            errorDate.innerHTML = ('fill date field')
+            errorDate.style.color = 'red'
+            event.preventDefault();
         }
         else {
-            alert("good 2")
+            errorDate.innerHTML = ('good 4')
+            errorDate.style.color = 'green'  
         }
-         //else {
-           //  Title.classList.remove("ERROR")
-         //}
-
-         if (Price.value=="") {
-             alert ("please fill this field 3")
-         }
-         else {
-             alert("good 3")
-         }
-
         
-    if (isNaN(Price.value)) {
-        alert ("enter a number")
+        if(Languages.selectedIndex==""){
+        form_ok = false
+        errorLang.innerHTML = 'select a language'
+        errorLang.style.color = 'red'
+        event.preventDefault();
     }
-    else  {
-        alert("ok")
+    else {
+        errorLang.innerHTML = ('good 5')
+        errorLang.style.color = 'green'
     }
-
-    if (Languages.selectedIndex=="") {
-        alert("Please select language")
+    
+    if (!(books_type[0].checked || books_type[1].checked || books_type[2].checked)){
+        form_ok = false;
+        errorType.innerHTML = ('please select a type');
+        errorType.style.color = 'red';
+        event.preventDefault();
     }
 
-    if (!(books_type[0].checked || books_type[1].checked || books_type[2].checked))
-        alert ("please select a type")
-        
-        
-        }
-        validation.addEventListener('submit', validate);
-
-
-
-
-
-
-
-
+     
+         if (form_ok == true) {
+         var validDone = document.getElementById('valid_done')
+        validDone.innerHTML= ('validation done')
+        validDone.style.color = 'green'
+        event.preventDefault();
+    } 
+    }
+        validation.addEventListener('submit', validate)
 
     </script>
 </body>
