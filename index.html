@@ -28,7 +28,7 @@
         <label> language:</label>
         <p id="language_msg"></p>
         <select id="language" name="languages">
-            <option>select a language</option>
+            <option disabled selected hidden value>select a language</option>
             <option value="Arabic">Arabic</option>
             <option value="English">English</option>
             <option value="French">French</option>
@@ -48,6 +48,18 @@
         <p id="valid_done"></p>
             <input type="submit" name="validate" value="submit" id="subm">
     </form>
+
+    <table border="1" width="60%">
+        <thead>
+            <td>Title</td>
+            <td>Author</td>
+            <td>Price</td>
+            <td>Publish Date</td>
+            <td>Language</td>
+            <td>Type</td>
+        </thead>
+
+    </table>
 
     <script>
         var validation = document.getElementById('validation');
@@ -161,7 +173,10 @@
         errorType.style.color = 'red';
         event.preventDefault();
     }
-
+    else {
+        errorType.innerHTML = ('good 6');
+        errorType.style.color = 'green'; 
+    }
      
          if (form_ok == true) {
          var validDone = document.getElementById('valid_done')
