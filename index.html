@@ -58,6 +58,7 @@
             <td>Language</td>
             <td>Type</td>
         </thead>
+        <tbody id="table_body"></tbody>
 
     </table>
 
@@ -68,31 +69,29 @@
         var Price = validation.elements["price"];
         var Languages = validation.elements["language"];
         var books_type = validation.elements["type"];
-        var pub_date = validation.elements["date"]
+        var pub_date = validation.elements["date"];        
         var form_ok = true ;
         //var errorMessage = document.getElementById('title_msg');
 
         function validate(event) {
+            event.preventDefault();
             var errorTitle = document.getElementById('title_msg');
             var errorAuthor = document.getElementById('author_msg');
             var errorPrice = document.getElementById('price_msg');
             var errorDate = document.getElementById('date_msg');
             var errorLang = document.getElementById('language_msg');
-            var errorType = document.getElementById('type_msg')
+            var errorType = document.getElementById('type_msg');
         
-            if(Title.value.length > 4){
+            if (Title.value.length > 4){
                form_ok = false;
-               errorTitle.innerHTML = ("title too long")
-               errorTitle.style.color = 'red'
-               event.preventDefault();
-               // alert("error");
+               errorTitle.innerHTML = "title too long";
+               errorTitle.style.color = 'red';
             }
              
-            else if(Title.value == ""){
+            else if (Title.value == ""){
               form_ok = false;
-              errorTitle.innerHTML = ("please fill title field")
-              errorTitle.style.color = 'red'
-              event.preventDefault();
+              errorTitle.innerHTML = 'please fill title field';
+              errorTitle.style.color = 'red';
          }
          else{
             errorTitle.innerHTML = "good!";
@@ -100,16 +99,14 @@
          }
 
          if (Author.value == "") {
-             form_ok = false
-             errorAuthor.innerHTML = ('please fill author field')
-             errorAuthor.style.color = ('red')
-             event.preventDefault();
+             form_ok = false;
+             errorAuthor.innerHTML = 'please fill author field';
+             errorAuthor.style.color = 'red';
         }
         else if(Author.value.length > 4){
             form_ok= false;
-            errorAuthor.innerHTML = ('author name too long');
-            errorAuthor.style.color = 'red'
-            event.preventDefault();
+            errorAuthor.innerHTML ='author name too long';
+            errorAuthor.style.color = 'red';
         }
         else{
         errorAuthor.innerHTML = 'good 2';
@@ -117,50 +114,38 @@
     }
         
         if(Price.value=="") {
-             form_ok = false
-            errorPrice.innerHTML= ('please fill price field')
-            errorPrice.style.color = 'red'
-            event.preventDefault();
+             form_ok = false;
+            errorPrice.innerHTML= 'please fill price field';
+            errorPrice.style.color = 'red';
          }
                
-        else if(isNaN(Price.value)){
-        errorPrice.innerHTML= ('please enter a number')
-        errorPrice.style.color = 'red'
-        event.preventDefault();
+        else if (isNaN(Price.value)){
+        errorPrice.innerHTML= 'please enter a number';
+        errorPrice.style.color = 'red';
         }
-        else if(Price.value <0){
-            errorPrice.innerHTML = ('enter a positive number');
-            errorPrice.style.color = 'red';
-            event.preventDefault();
+        else if (Price.value <0){
+            errorPrice.innerHTML ='enter a positive number';
+            errorPrice.style.color ='red';
         }
         else{
-            errorPrice.innerHTML= 'good 3'
-            errorPrice.style.color = 'green'
+            errorPrice.innerHTML= 'good 3';
+            errorPrice.style.color = 'green';
         }
 
-        
-        
-        // else {
-        //     errorPrice.innerHTML= 'good 4'
-        //     errorPrice.style.color = 'green'
-        // }
-        
-        if(pub_date.value ==""){
+        if (pub_date.value ==""){
             form_ok = false;
-            errorDate.innerHTML = ('fill date field')
-            errorDate.style.color = 'red'
-            event.preventDefault();
+            errorDate.innerHTML ='fill date field';
+            errorDate.style.color = 'red';
         }
         else {
-            errorDate.innerHTML = ('good 4')
-            errorDate.style.color = 'green'  
+            errorDate.innerHTML ='good 4';
+            errorDate.style.color = 'green'; 
         }
         
-        if(Languages.selectedIndex==""){
-        form_ok = false
-        errorLang.innerHTML = 'select a language'
-        errorLang.style.color = 'red'
-        event.preventDefault();
+        if (Languages.selectedIndex==""){
+        form_ok = false;
+        errorLang.innerHTML = 'select a language';
+        errorLang.style.color = 'red';
     }
     else {
         errorLang.innerHTML = ('good 5')
@@ -169,23 +154,21 @@
     
     if (!(books_type[0].checked || books_type[1].checked || books_type[2].checked)){
         form_ok = false;
-        errorType.innerHTML = ('please select a type');
-        errorType.style.color = 'red';
-        event.preventDefault();
+        errorType.innerHTML ='please select a type';
+        errorType.style.color ='red';
     }
     else {
-        errorType.innerHTML = ('good 6');
+        errorType.innerHTML = 'good 6';
         errorType.style.color = 'green'; 
     }
      
          if (form_ok == true) {
-         var validDone = document.getElementById('valid_done')
-        validDone.innerHTML= ('validation done')
-        validDone.style.color = 'green'
-        event.preventDefault();
-    } 
+         var validDone = document.getElementById('valid_done');
+        validDone.innerHTML= 'validation done';
+        validDone.style.color = 'green';
+    }     
     }
-        validation.addEventListener('submit', validate)
+    validation.addEventListener('submit', validate)
 
     </script>
 </body>
