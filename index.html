@@ -176,7 +176,13 @@
         tr.insertCell(3).innerHTML = pub_date.value;
         tr.insertCell(4).innerHTML = Languages.options[Languages.selectedIndex].value;
         tr.insertCell(5).innerHTML = books_type.value;
-        
+    
+        Title.value = "";
+        Author.value = "";
+        Price.value = "";
+        pub_date.value = "";
+        Languages.value="";
+        books_type.value = "";
     }    
 
 }
