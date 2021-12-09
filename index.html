@@ -49,17 +49,16 @@
             <input type="submit" name="validate" value="submit" id="subm">
     </form>
 
-    <table border="1" width="60%">
-        <thead>
+    <table id="my_table" border="1" width="60%">
+        <tr>
             <td>Title</td>
             <td>Author</td>
             <td>Price</td>
             <td>Publish Date</td>
             <td>Language</td>
             <td>Type</td>
-        </thead>
-        <tbody id="table_body"></tbody>
-
+        </tr>
+        
     </table>
 
     <script>
@@ -69,9 +68,9 @@
         var Price = validation.elements["price"];
         var Languages = validation.elements["language"];
         var books_type = validation.elements["type"];
-        var pub_date = validation.elements["date"];        
-        var form_ok = true ;
-        //var errorMessage = document.getElementById('title_msg');
+        var pub_date = validation.elements["date"];
+        var table = document.getElementById("my_table");
+        
 
         function validate(event) {
             event.preventDefault();
@@ -81,7 +80,9 @@
             var errorDate = document.getElementById('date_msg');
             var errorLang = document.getElementById('language_msg');
             var errorType = document.getElementById('type_msg');
-        
+            var form_ok = true ;
+         
+            //title//
             if (Title.value.length > 4){
                form_ok = false;
                errorTitle.innerHTML = "title too long";
@@ -97,7 +98,8 @@
             errorTitle.innerHTML = "good!";
             errorTitle.style.color = 'green';
          }
-
+ 
+         //author//
          if (Author.value == "") {
              form_ok = false;
              errorAuthor.innerHTML = 'please fill author field';
@@ -113,6 +115,7 @@
         errorAuthor.style.color = 'green';
     }
         
+        //price//
         if(Price.value=="") {
              form_ok = false;
             errorPrice.innerHTML= 'please fill price field';
@@ -120,10 +123,12 @@
          }
                
         else if (isNaN(Price.value)){
+            form_ok = false;
         errorPrice.innerHTML= 'please enter a number';
         errorPrice.style.color = 'red';
         }
         else if (Price.value <0){
+            form_ok = false;
             errorPrice.innerHTML ='enter a positive number';
             errorPrice.style.color ='red';
         }
@@ -132,6 +137,7 @@
             errorPrice.style.color = 'green';
         }
 
+            //
         if (pub_date.value ==""){
             form_ok = false;
             errorDate.innerHTML ='fill date field';
@@ -161,14 +167,23 @@
         errorType.innerHTML = 'good!';
         errorType.style.color = 'green'; 
     }
-     
-         if (form_ok == true) {
-         var validDone = document.getElementById('valid_done');
-        validDone.innerHTML= 'validation done';
-        validDone.style.color = 'green';
-    }     
-    }
+
+    if(form_ok){
+        var tr = table.insertRow(-1);
+        tr.insertCell(0).innerHTML = Title.value;
+        tr.insertCell(1).innerHTML = Author.value;
+        tr.insertCell(2).innerHTML = Price.value;
+        tr.insertCell(3).innerHTML = pub_date.value;
+        tr.insertCell(4).innerHTML = Languages.options[Languages.selectedIndex].value;
+        tr.insertCell(5).innerHTML = books_type.value;
+        
+    }    
+
+}
     validation.addEventListener('submit', validate)
+
+    //table
+    
 
     </script>
 </body>
