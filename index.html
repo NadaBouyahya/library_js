@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,24 +8,25 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <form id="validation" >
+    <form id="validation">
         <label>Title:</label>
-            <p id="title_msg"></p>
-            <input type="text" name="title"> <br> <br>
-        
+        <p id="title_msg"></p>
+        <input type="text" name="title"> <br> <br>
+
         <label>Author:</label>
         <p id="author_msg"></p>
-            <input type="text" name="author"> <br> <br>
-        
+        <input type="text" name="author"> <br> <br>
+
         <label>Price:</label>
         <p id="price_msg"></p>
-            <input type="text" name="price"> <br><br>
-        
+        <input type="text" name="price"> <br><br>
+
         <label>Publish date:</label>
         <p id="date_msg"></p>
-            <input type="date" name="date"> <br> <br>
-        
+        <input type="date" name="date"> <br> <br>
+
         <label> language:</label>
         <p id="language_msg"></p>
         <select id="language" name="languages">
@@ -33,20 +35,20 @@
             <option value="English">English</option>
             <option value="French">French</option>
         </select> <br><br>
-            
+
         <label>Types:</label>
         <p id="type_msg"></p>
         <label for="Novel">Novels</label>
-            <input type="radio" name="type" id="Novel" value="Novel">
-            
+        <input type="radio" name="type" id="Novel" value="Novel">
+
         <label for="Essay">Essay</label>
-            <input type="radio" name="type" id="Essay" value="Essay">
-            
+        <input type="radio" name="type" id="Essay" value="Essay">
+
         <label for="Comics">Comics</label>
-            <input type="radio" name="type" id="comics" value="Comics">
+        <input type="radio" name="type" id="comics" value="Comics">
 
         <p id="valid_done"></p>
-            <input type="submit" name="validate" value="submit" id="subm">
+        <input type="submit" name="validate" value="submit" id="subm">
     </form>
 
     <table id="my_table" border="1" width="60%">
@@ -57,8 +59,9 @@
             <td>Publish Date</td>
             <td>Language</td>
             <td>Type</td>
+            <td>Control</td>
         </tr>
-        
+
     </table>
 
     <script>
@@ -70,7 +73,7 @@
         var books_type = validation.elements["type"];
         var pub_date = validation.elements["date"];
         var table = document.getElementById("my_table");
-        
+
 
         function validate(event) {
             event.preventDefault();
@@ -82,116 +85,123 @@
             var errorLang = document.getElementById('language_msg');
             var errorType = document.getElementById('type_msg');
             // form validation
-            var form_ok = true ;
-         
+            var form_ok = true;
+
             //title//
-            if (Title.value.length > 4){
-               form_ok = false;
-               errorTitle.innerHTML = "title too long";
-               errorTitle.style.color = 'red';
+            if (Title.value.length > 4) {
+                form_ok = false;
+                errorTitle.innerHTML = "title too long";
+                errorTitle.style.color = 'red';
             }
-             
-            else if (Title.value == ""){
-              form_ok = false;
-              errorTitle.innerHTML = 'please fill title field';
-              errorTitle.style.color = 'red';
-         }
-         else{
-            errorTitle.innerHTML = "good!";
-            errorTitle.style.color = 'green';
-         }
- 
-         //author//
-         if (Author.value == "") {
-             form_ok = false;
-             errorAuthor.innerHTML = 'please fill author field';
-             errorAuthor.style.color = 'red';
-        }
-        else if(Author.value.length > 4){
-            form_ok= false;
-            errorAuthor.innerHTML ='author name too long';
-            errorAuthor.style.color = 'red';
-        }
-        else{
-        errorAuthor.innerHTML = 'good!';
-        errorAuthor.style.color = 'green';
-    }
-        
-        //price//
-        if(Price.value=="") {
-             form_ok = false;
-            errorPrice.innerHTML= 'please fill price field';
-            errorPrice.style.color = 'red';
-         }
-               
-        else if (isNaN(Price.value)){
-            form_ok = false;
-        errorPrice.innerHTML= 'please enter a number';
-        errorPrice.style.color = 'red';
-        }
-        else if (Price.value <0){
-            form_ok = false;
-            errorPrice.innerHTML ='enter a positive number';
-            errorPrice.style.color ='red';
-        }
-        else{
-            errorPrice.innerHTML= 'good!';
-            errorPrice.style.color = 'green';
-        }
+
+            else if (Title.value == "") {
+                form_ok = false;
+                errorTitle.innerHTML = 'please fill title field';
+                errorTitle.style.color = 'red';
+            }
+            else {
+                errorTitle.innerHTML = "good!";
+                errorTitle.style.color = 'green';
+            }
+
+            //author//
+            if (Author.value == "") {
+                form_ok = false;
+                errorAuthor.innerHTML = 'please fill author field';
+                errorAuthor.style.color = 'red';
+            }
+            else if (Author.value.length > 4) {
+                form_ok = false;
+                errorAuthor.innerHTML = 'author name too long';
+                errorAuthor.style.color = 'red';
+            }
+            else {
+                errorAuthor.innerHTML = 'good!';
+                errorAuthor.style.color = 'green';
+            }
+
+            //price//
+            if (Price.value == "") {
+                form_ok = false;
+                errorPrice.innerHTML = 'please fill price field';
+                errorPrice.style.color = 'red';
+            }
+
+            else if (isNaN(Price.value)) {
+                form_ok = false;
+                errorPrice.innerHTML = 'please enter a number';
+                errorPrice.style.color = 'red';
+            }
+            else if (Price.value < 0) {
+                form_ok = false;
+                errorPrice.innerHTML = 'enter a positive number';
+                errorPrice.style.color = 'red';
+            }
+            else {
+                errorPrice.innerHTML = 'good!';
+                errorPrice.style.color = 'green';
+            }
 
             //publishing Date
-        if (pub_date.value ==""){
-            form_ok = false;
-            errorDate.innerHTML ='fill date field';
-            errorDate.style.color = 'red';
+            if (pub_date.value == "") {
+                form_ok = false;
+                errorDate.innerHTML = 'fill date field';
+                errorDate.style.color = 'red';
+            }
+            else {
+                errorDate.innerHTML = 'good!';
+                errorDate.style.color = 'green';
+            }
+
+            //languages
+            if (Languages.selectedIndex == "") {
+                form_ok = false;
+                errorLang.innerHTML = 'select a language';
+                errorLang.style.color = 'red';
+            }
+            else {
+                errorLang.innerHTML = 'good!'
+                errorLang.style.color = 'green'
+            }
+
+            //type
+            if (!(books_type[0].checked || books_type[1].checked || books_type[2].checked)) {
+                form_ok = false;
+                errorType.innerHTML = 'please select a type';
+                errorType.style.color = 'red';
+            }
+            else {
+                errorType.innerHTML = 'good!';
+                errorType.style.color = 'green';
+            }
+
+            // table
+            if (form_ok) {
+                var tr = table.insertRow(-1);
+                tr.insertCell(0).innerHTML = Title.value;
+                tr.insertCell(1).innerHTML = Author.value;
+                tr.insertCell(2).innerHTML = Price.value;
+                tr.insertCell(3).innerHTML = pub_date.value;
+                tr.insertCell(4).innerHTML = Languages.options[Languages.selectedIndex].value;
+                tr.insertCell(5).innerHTML = books_type.value;
+                tr.insertCell(6).innerHTML = "<input type='button' class='delete_btn' onclick='delete_row(this)' value='delete'>"
+
+                Title.value = "";
+                Author.value = "";
+                Price.value = "";
+                pub_date.value = "";
+                Languages.value = "";
+                books_type.checked = false;
+            }
+
         }
-        else {
-            errorDate.innerHTML ='good!';
-            errorDate.style.color = 'green'; 
+        function delete_row(r){
+        var i = r.parentNode.parentNode.rowIndex;
+        table.deleteRow(i);
         }
-        
-        //languages
-        if (Languages.selectedIndex==""){
-        form_ok = false;
-        errorLang.innerHTML = 'select a language';
-        errorLang.style.color = 'red';
-    }
-    else {
-        errorLang.innerHTML = 'good!'
-        errorLang.style.color = 'green'
-    }
 
-        //type
-    if (!(books_type[0].checked || books_type[1].checked || books_type[2].checked)){
-        form_ok = false;
-        errorType.innerHTML ='please select a type';
-        errorType.style.color ='red';
-    }
-    else {
-        errorType.innerHTML = 'good!';
-        errorType.style.color = 'green'; 
-    }
-
-    // table
-    if(form_ok){
-        var tr = table.insertRow(-1);
-        tr.insertCell(0).innerHTML = Title.value;
-        tr.insertCell(1).innerHTML = Author.value;
-        tr.insertCell(2).innerHTML = Price.value;
-        tr.insertCell(3).innerHTML = pub_date.value;
-        tr.insertCell(4).innerHTML = Languages.options[Languages.selectedIndex].value;
-        tr.insertCell(5).innerHTML = books_type.value;
-        
-        Title.value = "";
-        Author.value = "";
-        Price.value = "";
-        pub_date.value = "";
-        Languages.value="";
-        books_type.value = "";
-    }    
-
-}
-    validation.addEventListener('submit', validate)    
-</script>
+        validation.addEventListener('submit', validate)
+    </script>
 </body>
+
 </html>
