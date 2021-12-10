@@ -175,7 +175,7 @@
                 errorType.style.color = 'green';
             }
 
-            // table
+            // add rows+cells to table
             if (form_ok) {
                 var tr = table.insertRow(-1);
                 tr.insertCell(0).innerHTML = Title.value;
@@ -185,16 +185,23 @@
                 tr.insertCell(4).innerHTML = Languages.options[Languages.selectedIndex].value;
                 tr.insertCell(5).innerHTML = books_type.value;
                 tr.insertCell(6).innerHTML = "<input type='button' class='delete_btn' onclick='delete_row(this)' value='delete'>"
-
+                
+                     // clear form after submit
                 Title.value = "";
                 Author.value = "";
                 Price.value = "";
                 pub_date.value = "";
                 Languages.value = "";
-                books_type.checked = false;
+               
             }
-
+            var x = document.getElementsByName("type");
+            var i;
+            for (i = 0; i < x.length; i++) {
+            if (x[i].type == "radio") {
+            x[i].checked = false;
+            } }
         }
+        // delete button
         function delete_row(r){
         var i = r.parentNode.parentNode.rowIndex;
         table.deleteRow(i);
