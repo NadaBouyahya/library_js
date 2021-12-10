@@ -1,3 +1,12 @@
+body {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    background-image: url(library.jpg);
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 form{
     display: flex;
     flex-direction: column;
@@ -17,6 +26,7 @@ select{
 }
 
 table {
-    margin-top: 20px;
-    border:2px;
+    display: flex;
+    justify-content: center;
+    border: 10px;
 }
