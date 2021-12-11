@@ -177,7 +177,7 @@
                 tr.insertCell(3).innerHTML = pub_date.value;
                 tr.insertCell(4).innerHTML = Languages.options[Languages.selectedIndex].value;
                 tr.insertCell(5).innerHTML = books_type.value;
-                tr.insertCell(6).innerHTML = "<input type='button' class='delete_btn' onclick='delete_row(this)' value='delete'>"
+                tr.insertCell(6).innerHTML = "<input type='button' class='delete_btn' onclick='delete_row(this)' value='delete'><input type='button' class='edit_btn' onclick='edit_row(this)' value='Edit'>"
                 
                      // clear form after submit
                 Title.value = "";
@@ -196,9 +196,49 @@
             } }
         }
         // delete button
-        function delete_row(r){
-        var i = r.parentNode.parentNode.rowIndex;
+        function delete_row(replace){
+        var i = replace.parentNode.parentNode.rowIndex;
         table.deleteRow(i);
+        }
+
+        // Edit button
+        function edit_row(replace){
+            var i = replace.parentNode.parentNode.rowIndex;
+            var row = table.rows[i];
+            
+            if(replace.value=="Edit"){
+                Title.value = row.cells[0].innerHTML;
+                Author.value = row.cells[1].innerHTML;
+                Price.value = row.cells[2].innerHTML;
+                pub_date.value = row.cells[3].innerHTML;
+                Languages.value = row.cells[4].innerHTML;
+
+                for(var i=0;i<3;i++){
+                    if(books_type[i].value==row.cells[5].innerHTML){
+                        books_type[i].checked = true;
+                        break;
+                    }
+                }
+                replace.value = "Save";
+                document.getElementById('subm').setAttribute("disabled","true");
+            }
+            else{
+                row.cells[0].innerHTML = Title.value;
+                row.cells[1].innerHTML = Author.value;
+                row.cells[2].innerHTML = Price.value;
+                row.cells[3].innerHTML = pub_date.value;
+                row.cells[4].innerHTML = Languages.value;
+
+                for(var i=0;i<3;i++){
+                    if(books_type[i].checked){
+                        row.cells[5].innerHTML = books_type[i].value;
+                        break;
+                    }
+                }
+                replace.value = "Edit";
+                document.getElementById('subm').removeAttribute("disabled");
+            }
+
         }
 
         validation.addEventListener('submit', validate)
