@@ -11,34 +11,27 @@
 
 <body>
     <form id="validation">
-        <label>Title:</label>
         <p id="title_msg"></p>
-        <input type="text" name="title"> <br> <br>
-
-        <label>Author:</label>
+        <input type="text" placeholder="Title" name="title"> <br> 
         <p id="author_msg"></p>
-        <input type="text" name="author"> <br> <br>
+        <input type="text" placeholder="Author Name" name="author"><br>
+         <p id="price_msg"></p>
+        <input type="text" placeholder="Price" name="price"><br>
 
-        <label>Price:</label>
-        <p id="price_msg"></p>
-        <input type="text" name="price"> <br><br>
-
-        <label>Publish date:</label>
         <p id="date_msg"></p>
-        <input type="date" name="date"> <br> <br>
+        <input type="date" placeholder="Publishing date" name="date"> <br>
 
-        <label> language:</label>
         <p id="language_msg"></p>
         <select id="language" name="languages">
             <option disabled selected hidden value>select a language</option>
             <option value="Arabic">Arabic</option>
             <option value="English">English</option>
             <option value="French">French</option>
-        </select> <br><br>
+        </select> <br>
 
-        <label>Types:</label>
         <p id="type_msg"></p>
-        <label for="Novel">Novels</label>
+    <div class="radio_type">
+        <label>Types:</label> <label for="Novel">Novels</label>
         <input type="radio" name="type" id="Novel" value="Novel">
 
         <label for="Essay">Essay</label>
@@ -46,12 +39,12 @@
 
         <label for="Comics">Comics</label>
         <input type="radio" name="type" id="comics" value="Comics">
-
+    </div>
         <p id="valid_done"></p>
         <input type="submit" name="validate" value="submit" id="subm">
     </form>
 
-    <table id="my_table" border="1" width="60%">
+    <table id="my_table" border="5" width="70%">
         <tr>
             <td>Title</td>
             <td>Author</td>
