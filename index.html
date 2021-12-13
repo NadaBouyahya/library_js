@@ -10,6 +10,10 @@
 </head>
 
 <body>
+    <div class="Main_title">
+        <h1> Book Wood</h1>
+    </div>
+<main>
 <div class="FORM">
     <form id="validation">
         <p id="title_msg"></p>
@@ -32,7 +36,7 @@
 
         <p id="type_msg"></p>
     <div class="radio_type">
-        <label>Types:</label> <label for="Novel">Novels</label>
+      <label for="Novel">Novels</label>
         <input type="radio" name="type" id="Novel" value="Novel">
 
         <label for="Essay">Essay</label>
@@ -45,8 +49,8 @@
         <input type="submit" name="validate" value="submit" id="subm">
     </form>
 </div>
-
-    <table id="my_table" border="5" width="70%">
+<div class="the_table">
+    <table id="my_table">
         <tr>
             <td>Title</td>
             <td>Author</td>
@@ -56,9 +60,9 @@
             <td>Type</td>
             <td>Control</td>
         </tr>
-
     </table>
-
+</div>
+</main>
     <script>
         var validation = document.getElementById('validation');
         var Title = validation.elements["title"];
@@ -206,7 +210,6 @@
         function edit_row(replace){
             var i = replace.parentNode.parentNode.rowIndex;
             var row = table.rows[i];
-            
             if(replace.value=="Edit"){
                 Title.value = row.cells[0].innerHTML;
                 Author.value = row.cells[1].innerHTML;
