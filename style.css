@@ -12,6 +12,7 @@ form{
     display: flex;
     flex-direction: column;
     width: 30%;
+    
 }
 
 input {
@@ -28,10 +29,20 @@ select{
 }*/
 input {
     height: 25px;
+    background-color: rgba(255, 255, 255, 0.856);
+    outline: none;
+    border-style: solid;
+    border-width: thin;
+    border-radius: 5px;
 }
 
 select{
     height: 27px;
+    background-color: rgba(255, 255, 255, 0.856);
+    outline: none;
+    border-style: solid;
+    border-width: thin;
+    border-radius: 5px;
 }
 #subm {
     width:30%;
@@ -42,9 +53,23 @@ table {
     display: flex;
     justify-content: center;
     border: 20px;
-}
+    width: 50%;
+    background-color:rgba(175, 150, 104, 0.486);
+    font-size: 20px;
+    border-color: black;
+    color: white;
+    font-weight: 100;
+    font-family: Arial, Helvetica, sans-serif;
+    }
 .radio_type {
 display: flex;
 flex-direction:row;
-justify-content: space-evenly;
+justify-content: space-around;
+}
+
+FORM {
+    background-color:rgba(175, 150, 104, 0.486);
+    width: 400px;
+    padding: 30px;
+    border-radius: 10px;
 }

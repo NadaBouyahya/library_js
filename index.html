@@ -10,6 +10,7 @@
 </head>
 
 <body>
+<div class="FORM">
     <form id="validation">
         <p id="title_msg"></p>
         <input type="text" placeholder="Title" name="title"> <br> 
@@ -43,6 +44,7 @@
         <p id="valid_done"></p>
         <input type="submit" name="validate" value="submit" id="subm">
     </form>
+</div>
 
     <table id="my_table" border="5" width="70%">
         <tr>
@@ -236,7 +238,21 @@
                 }
                 replace.value = "Edit";
                 document.getElementById('subm').removeAttribute("disabled");
+
+                Title.value = "";
+                Author.value = "";
+                Price.value = "";
+                pub_date.value = "";
+                Languages.value = "";
+               
             }
+            var x = document.getElementsByName("type");
+            var i;
+            for (i = 0; i < x.length; i++) {
+            if (x[i].type == "radio") {
+            x[i].checked = false;
+            } }
+
 
         }
 
