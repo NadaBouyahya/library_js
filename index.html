@@ -202,8 +202,11 @@
         }
         // delete button
         function delete_row(replace){
-        var i = replace.parentNode.parentNode.rowIndex;
-        table.deleteRow(i);
+            if(confirm("are you sure ?")){
+            var i = replace.parentNode.parentNode.rowIndex;
+            table.deleteRow(i);
+            }
+       
         }
 
         // Edit button
