@@ -10,15 +10,25 @@ body {
 }
 
 .Main_title{
-    padding: 20px;
+    /* padding: 20px; */
     display: flex;
     justify-content: center;
+}
+
+.Main_title h1 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 40px;
+    color: white;
+    background-color: rgba(188, 115, 69, 0.39);
+    border-radius: 10px;
+    padding: 10px;
 }
 
 main{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-top: 20px;
 }
 
 
