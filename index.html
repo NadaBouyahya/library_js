@@ -18,9 +18,14 @@
     <form id="validation">
         <p id="title_msg"></p>
         <input type="text" placeholder="Title" name="title"> <br> 
+        
         <p id="author_msg"></p>
         <input type="text" placeholder="Author Name" name="author"><br>
-         <p id="price_msg"></p>
+         
+        <p id="email_msg"></p>
+        <input type="text" placeholder="Email" name="email">
+
+        <p id="price_msg"></p>
         <input type="text" placeholder="Price" name="price"><br>
 
         <p id="date_msg"></p>
@@ -67,11 +72,12 @@
         var validation = document.getElementById('validation');
         var Title = validation.elements["title"];
         var Author = validation.elements["author"];
+        var Email = validation.elements["email"];
         var Price = validation.elements["price"];
         var Languages = validation.elements["language"];
         var books_type = validation.elements["type"];
         var pub_date = validation.elements["date"];
-        var table = document.getElementById("my_table");
+        var table = document.getElementById("my_table"); 
 
 
         function validate(event) {
@@ -79,10 +85,14 @@
             // error message vars
             var errorTitle = document.getElementById('title_msg');
             var errorAuthor = document.getElementById('author_msg');
+            var errorEmail = document.getElementById('email_msg');
             var errorPrice = document.getElementById('price_msg');
             var errorDate = document.getElementById('date_msg');
             var errorLang = document.getElementById('language_msg');
             var errorType = document.getElementById('type_msg');
+
+            //Regex Vars
+            var regEmail = /^(((\w+)(\.)(\w+))|((\w+)))(@)(\w+)(\.)(\w+)$/;
             // form validation
             var form_ok = true;
 
@@ -118,6 +128,24 @@
                 errorAuthor.innerHTML = 'good!';
                 errorAuthor.style.color = 'green';
             }
+
+            // Email
+        if(Email.value !==""){
+                
+                if (regEmail.test(Email.value)){
+                errorEmail.innerHTML= "yay"
+                errorEmail.style.color = 'green';
+            }
+                else{
+                errorEmail.innerHTML= "nop"
+                errorEmail.style.color = 'red';
+            }
+        
+        }
+        else{
+            errorEmail.innerHTML= "please fill email field"
+            errorEmail.style.color = 'red';
+        }
 
             //price//
             if (Price.value == "") {
@@ -175,19 +203,19 @@
             }
 
             // add rows+cells to table
-            if (form_ok) {
-                var tr = table.insertRow(-1);
                 tr.insertCell(0).innerHTML = Title.value;
                 tr.insertCell(1).innerHTML = Author.value;
-                tr.insertCell(2).innerHTML = Price.value;
-                tr.insertCell(3).innerHTML = pub_date.value;
-                tr.insertCell(4).innerHTML = Languages.options[Languages.selectedIndex].value;
-                tr.insertCell(5).innerHTML = books_type.value;
-                tr.insertCell(6).innerHTML = "<input type='button' class='delete_btn' onclick='delete_row(this)' value='delete'><input type='button' class='edit_btn' onclick='edit_row(this)' value='Edit'>"
+                tr.insertCell(2).innerHTML = Email.value;
+                tr.insertCell(3).innerHTML = Price.value;
+                tr.insertCell(4).innerHTML = pub_date.value;
+                tr.insertCell(5).innerHTML = Languages.options[Languages.selectedIndex].value;
+                tr.insertCell(6).innerHTML = books_type.value;
+                tr.insertCell(7).innerHTML = "<input type='button' class='delete_btn' onclick='delete_row(this)' value='delete'><input type='button' class='edit_btn' onclick='edit_row(this)' value='Edit'>"
                 
                      // clear form after submit
                 Title.value = "";
                 Author.value = "";
+                Email.value = "";
                 Price.value = "";
                 pub_date.value = "";
                 Languages.value = "";
@@ -199,7 +227,7 @@
             if (x[i].type == "radio") {
             x[i].checked = false;
             } }
-        }
+         
         // delete button
         function delete_row(replace){
             if(confirm("are you sure ?")){
@@ -221,7 +249,7 @@
                 Languages.value = row.cells[4].innerHTML;
 
                 for(var i=0;i<3;i++){
-                    if(books_type[i].value==row.cells[5].innerHTML){
+                    if(books_type[i].value==row.cells[6].innerHTML){
                         books_type[i].checked = true;
                         break;
                     }
@@ -232,13 +260,14 @@
             else{
                 row.cells[0].innerHTML = Title.value;
                 row.cells[1].innerHTML = Author.value;
+                row.cells[2].innerHTML = Email.value;
                 row.cells[2].innerHTML = Price.value;
                 row.cells[3].innerHTML = pub_date.value;
                 row.cells[4].innerHTML = Languages.value;
 
                 for(var i=0;i<3;i++){
                     if(books_type[i].checked){
-                        row.cells[5].innerHTML = books_type[i].value;
+                        row.cells[6].innerHTML = books_type[i].value;
                         break;
                     }
                 }
