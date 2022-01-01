@@ -87,7 +87,7 @@
             var form_ok = true;
 
             //title//
-            if (Title.value.length > 4) {
+            if (Title.value.length > 30) {
                 form_ok = false;
                 errorTitle.innerHTML = "title too long";
                 errorTitle.style.color = 'red';
@@ -109,7 +109,7 @@
                 errorAuthor.innerHTML = 'please fill author field';
                 errorAuthor.style.color = 'red';
             }
-            else if (Author.value.length > 4) {
+            else if (Author.value.length > 30) {
                 form_ok = false;
                 errorAuthor.innerHTML = 'author name too long';
                 errorAuthor.style.color = 'red';
